@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js" integrity="sha512-YeeA/Qxn5hYdkukScTCNNOhTrv1C2RubAGButJ1rmgQwZf/HdRaCGl+JAVkqsqaNRaYNHdheiuKKuPf9mDcqKg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="./SocketFront.js"></script>
+
+    <title>Axios chat</title>
+</head>
+
+<body>
+
+    <head class="titulo_cabecalho">Axios Chat</head>
+    <div class="fieldMessage">
+        <input type="text" name="" id="message" placeholder="Insira sua mensagem">
+        <button type="submit" id="enviar">enviar</button>
+
+    </div>
+</body>
+
+<script>
+    //valores do DOM
+    const SubmitButton = document.getElementById('enviar')
+
+    function SendMessageFront() {
+        SubmitButton.addEventListener("click", function(e) {
+
+            e.preventDefault()
+            const MessageValue = document.getElementById('message').value
+            $("fieldMessage").append(MessageValue)
+        })
+    }
+    SendMessageFront(MessageValue)
+</script>
+
+</html>
