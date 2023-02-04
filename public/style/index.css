@@ -15,6 +15,14 @@ button {
 }
 
 .fieldMessage {
-    position: absolute;
-    bottom: 50%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    overflow-y: scroll;
+    flex-direction: column;
+    padding: 10px 10px 10px 10px;
+    width: calc(100% - 20px);
+    margin: 0 auto;
 }
