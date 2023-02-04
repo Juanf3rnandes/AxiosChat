@@ -1,5 +1,20 @@
-.titulo_cabecalho {
+.container,
+h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+input,
+button {
+    position: absolute;
+    border: none;
+    outline: 0;
+    background-color: transparent;
+    bottom: 25%;
+}
+
+.fieldMessage {
+    position: absolute;
+    bottom: 50%;
 }

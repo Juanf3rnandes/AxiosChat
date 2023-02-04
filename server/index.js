@@ -20,4 +20,7 @@ server.listen(port, () => {
 
 io.on("connection", (socket) => {
     console.log(`${socket.id} se conecou ao servidor`)
+    socket.on("SendMessage", (mensagem) => {
+        socket.broadcast.emit("r_SendMessage", (mensagem))
+    })
 })

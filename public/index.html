@@ -7,34 +7,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js" integrity="sha512-YeeA/Qxn5hYdkukScTCNNOhTrv1C2RubAGButJ1rmgQwZf/HdRaCGl+JAVkqsqaNRaYNHdheiuKKuPf9mDcqKg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-    <script src="./SocketFront.js"></script>
+    <link rel="stylesheet" href="./style/index.css">
 
     <title>Axios chat</title>
 </head>
 
-<body>
+<header>
+    <h1>Axios Chat</h1>
+</header>
 
-    <head class="titulo_cabecalho">Axios Chat</head>
-    <div class="fieldMessage">
-        <input type="text" name="" id="message" placeholder="Insira sua mensagem">
-        <button type="submit" id="enviar">enviar</button>
+<main class='container'>
+    <div class='fieldMessage'>
 
     </div>
-</body>
+    <input type="text" name="" id="message" placeholder="Insira sua mensagem">
+    <button type="submit" id="enviar">enviar</button>
+
+</main>
 
 <script>
-    //valores do DOM
+    const server = io()
+        //valores do DOM
     const SubmitButton = document.getElementById('enviar')
 
-    function SendMessageFront() {
-        SubmitButton.addEventListener("click", function(e) {
 
+    function SendMessage() {
+        SubmitButton.addEventListener("click", function(e) {
             e.preventDefault()
-            const MessageValue = document.getElementById('message').value
-            $("fieldMessage").append(MessageValue)
+            const MessageValue = document.getElementById("message").value
+            $('.fieldMessage').append(`<P> você: ${MessageValue}</P>`)
+            server.emit("SendMessage", (MessageValue))
+            document.getElementById('message').value = ""
+        })
+        server.on("r_SendMessage", (mensagem) => {
+            $('.fieldMessage').append(`<P>  estranho: ${mensagem}</P>`)
         })
     }
-    SendMessageFront(MessageValue)
+    SendMessage()
 </script>
 
 </html>
