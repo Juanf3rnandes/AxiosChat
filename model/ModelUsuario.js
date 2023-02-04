@@ -1,0 +1,1 @@
+import Perfil from '../src/classPerfil.js'
