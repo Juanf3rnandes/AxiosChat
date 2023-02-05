@@ -1,0 +1,13 @@
+form {
+    position: absolute;
+    left: 45%;
+    justify-content: center;
+    align-items: center;
+    bottom: 40%;
+}
+
+input {
+    margin: 10px;
+    background-color: transparent;
+    border: none;
+}

@@ -1,4 +1,5 @@
 import express from 'express'
+import bodyParser from 'body-parser'
 import http from 'http'
 import { Socket } from 'socket.io'
 import { Server } from 'socket.io'
@@ -16,6 +17,7 @@ const io = new Server(server)
 app.use(express.static('./public'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+
 server.listen(port, () => {
     console.log(`Servidor rodando na porta ${port}`)
 })
