@@ -4,6 +4,10 @@ class Perfil {
         this.email = email
         this.amigos = amigos
     }
+    adionaAmigo(nome){
+        const Amigos =[]
+        Amigos.push(nome)
+    }
 }
 
 const UsuarioTeste = new Perfil("Juan", "teste@gmail.com", )
