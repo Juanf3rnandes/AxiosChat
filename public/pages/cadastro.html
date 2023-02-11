@@ -21,10 +21,11 @@
         <hr>
         <input type="mail" placeholder="insire um e-mail válido" id='email'> <br>
         <hr>
+        <input type="password" id='senha' placeholder="Crie uma senha"> <br>
+        <hr>
         <button type="submit">Me cadastrar</button>
     </form>
 </main>
-
 
 <script>
     const socketform = io()
@@ -37,25 +38,24 @@
             e.preventDefault()
                 // guarda os dados apos prevent default
 
-            const dados = [{
-                "nome": document.getElementById('name').value,
-                "email": document.getElementById('email').value
-            }]
+            const dados = {
+                nome: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                password:document.getElementById('senha').value
+            }
 
             fetch('http://localhost:8080/cadastrarusuario', {
+            
                 method: "POST",
-                body: dados
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                  },
+                body:dados
             }, )
-            socketform.emit("formulariocadastro", (dados))
-            socketform.on("r_formulariocadastro", (data) => {
-                console.log("teste")
-            })
+       
         })
-
     }
-
     SendForm()
 </script>
-
 
 </html>
