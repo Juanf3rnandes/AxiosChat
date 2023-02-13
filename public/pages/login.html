@@ -4,13 +4,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/login.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>Document</title>
 </head>
 <body>
     <form action="">
         <h1>Bem vindo de volta!</h1>   <br>
         <input type="text" id='login' placeholder ='email ou login'> <br>
+        <hr>
         <input type="password" id='password' placeholder= 'senha'>
+        <hr>
+        <button id ='botaologin'>Entrar</button>
     </form> 
 </body>
+
+<script>
+    
+function Login(){
+    const btnLogin = document.getElementById('botaologin')
+    btnLogin.addEventListener("click", function(e){
+        e.preventDefault()
+        const loginData = document.getElementById('login').value
+        const senhaData = CryptoJS.SHA256(document.getElementById('password').value)
+
+        const dados = {
+            email:loginData,
+            senha:senhaData
+        }
+
+        fetch('http://localhost:8080/AutenticaLogin', {
+            method:"POST",
+            headers:{
+                'Content-Type':"application/json"
+            },
+          body: JSON.stringify(dados)
+        })
+       
+    })
+ 
+    }
+    Login()
+    
+</script>
+
 </html>

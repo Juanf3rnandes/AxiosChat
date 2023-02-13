@@ -1,12 +1,29 @@
+import { response } from 'express'
+import bodyParser from 'body-parser'
 import app from '../server/index.js'
+import CryptoJS from 'crypto-js'
 import Usuarios from '../src/classPerfil.js'
+import  ModeloLogin from './CRUD/ModeloLogin.js'
+import express from 'express'
+ async function AutenticaLogin() {
+//app.use(express.json())
+//app.use(bodyParser.urlencoded({extended:true}))
+ app.post('/AutenticaLogin', (req,res) => {
 
-function teste() {
-    app.get('/teste', (req, res) => {
-        Usuarios.forEach(user => {
-            res.send(user)
-        })
-    })
+    try{
+        ModeloLogin.findAll({
+            where:{
+              email: req.body.email,
+                password:req.body.password
+                }
+            })
+            .then(
+                result => {
+                    res.send(result)})
+    }catch(error){
+        console.log(error)
+    }
+ })
 }
 
-export default teste
+export default AutenticaLogin

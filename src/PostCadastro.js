@@ -9,16 +9,12 @@ import bodyParser from 'body-parser';
 function cadastraUsuario() {
       app.post('/cadastrarusuario', (req, res) => {
         const newUserData = req.body
-        if(req.body == undefined) {
+        if(req.body === undefined) {
             res.send("erro ao efetuar cadastro")
         }else{
         res.send('usuario cadastrado'+  req.body)
        ModeloLogin.create(
-          {
-            login:req.body.nome,
-            email:req.body.email,
-            password:req.body.password
-          }
+         req.body
         )
         console.log(newUserData)
  }})

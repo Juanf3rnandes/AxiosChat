@@ -7,6 +7,7 @@ import TestaBanco from '../src/CRUD/testingconnect.js'
 import Sync from '../src/CRUD/sync.js'
 import teste from '../src/GetCaastros.js'
 import cadastraUsuario from '../src/PostCadastro.js'
+import AutenticaLogin from '../src/GetCaastros.js'
 const port = 8080
 
 //chama funcoes do banco
@@ -46,3 +47,4 @@ export default app
 
 teste() // chama funcao get usuario e outro componente
 cadastraUsuario() // chama funcao que ao enviar formulario faz uma chamada fetch em um post do componente
+AutenticaLogin() // usa findAll no banco pra validar login
